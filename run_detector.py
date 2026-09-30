@@ -26,7 +26,6 @@ values = diff.to_numpy()
 step = data.columns.to_series().diff().dt.total_seconds().median()
 min_frames = int(np.ceil(min_seconds / step)) + 1
 
-# Каждая полоса на отдельном метре должна держаться не менее минуты.
 mask = np.zeros(values.shape, dtype=np.int8)
 time_link = np.array([[0, 0, 0], [1, 1, 1], [0, 0, 0]])
 for sign, candidate in [(-1, values <= low), (1, values >= high)]:
